@@ -1,0 +1,785 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>てらこや｜実習記録でひとりにならない、看護学生のためのオンライン学び場</title>
+<meta name="description" content="深夜2時、実習記録でひとりになっている看護学生へ。AIで記録の負担を減らしながら、現役看護師と一緒に看護過程の考え方を整理できる学び場です。月額3,300円から。">
+<meta property="og:title" content="てらこや｜実習記録でひとりにならない、看護学生のためのオンライン学び場">
+<meta property="og:description" content="AIで記録の負担を減らしながら、現役看護師と一緒に看護過程の考え方を整理できる学び場。月額3,300円から。">
+<meta property="og:type" content="website">
+<meta name="theme-color" content="#FBF7EC">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&family=Noto+Serif+JP:wght@500&display=swap" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/dist/tabler-icons.min.css" rel="stylesheet">
+
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --bg-page: #FDFCF7;
+  --bg-card: #FFFFFF;
+  --bg-soft: #FBF7EC;
+  --bg-secondary: #F7F4ED;
+  --text-primary: #2C2C2A;
+  --text-secondary: #5F5E5A;
+  --text-tertiary: #888780;
+  --accent: #BA7517;
+  --accent-dark: #854F0B;
+  --accent-light: #FAEEDA;
+  --accent-soft: #FFFDF7;
+  --success: #1D9E75;
+  --border: rgba(0,0,0,0.08);
+  --border-strong: rgba(0,0,0,0.15);
+  --shadow-soft: 0 1px 3px rgba(186,117,23,0.06);
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'Noto Sans JP', -apple-system, BlinkMacSystemFont, 'Hiragino Sans', sans-serif;
+  background: var(--bg-page);
+  color: var(--text-primary);
+  line-height: 1.8;
+  font-size: 16px;
+  font-weight: 400;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.lp-wrap {
+  max-width: 680px;
+  margin: 0 auto;
+  padding: 0;
+  background: var(--bg-page);
+}
+
+.section {
+  padding: 3.5rem 1.5rem;
+  border-bottom: 1px solid var(--border);
+}
+.section:last-child { border-bottom: none; }
+
+h1, h2, h3 { font-weight: 500; letter-spacing: 0.01em; }
+
+.h2 {
+  font-size: 22px;
+  font-weight: 500;
+  line-height: 1.55;
+  margin: 0 0 1.5rem;
+  text-align: center;
+  color: var(--text-primary);
+}
+
+.lead {
+  font-size: 15px;
+  color: var(--text-secondary);
+  text-align: center;
+  margin: 0 auto 2rem;
+  max-width: 480px;
+  line-height: 1.9;
+}
+
+.hero {
+  background: var(--bg-soft);
+  padding: 3.5rem 1.75rem 3rem;
+  text-align: center;
+}
+.hero-lamp {
+  width: 64px; height: 64px;
+  margin: 0 auto 1.5rem;
+  border-radius: 50%;
+  background: var(--accent-light);
+  display: flex; align-items: center; justify-content: center;
+  color: var(--accent-dark);
+}
+.hero-lamp i { font-size: 28px; }
+.eyebrow {
+  font-size: 13px;
+  color: var(--text-secondary);
+  letter-spacing: 0.08em;
+  margin: 0 0 1.25rem;
+}
+.hero h1 {
+  font-size: 28px;
+  font-weight: 500;
+  line-height: 1.55;
+  margin: 0 0 1.5rem;
+  color: var(--text-primary);
+}
+@media (max-width: 480px) { .hero h1 { font-size: 24px; } }
+.hero p {
+  font-size: 15px;
+  color: var(--text-secondary);
+  margin: 0 0 0.75rem;
+  line-height: 1.9;
+}
+.hero-quote {
+  background: rgba(255,255,255,0.85);
+  border-radius: 8px;
+  padding: 1rem 1.25rem;
+  font-size: 14px;
+  color: var(--text-secondary);
+  margin: 1.5rem auto;
+  max-width: 340px;
+}
+.hero-message {
+  margin-top: 1.5rem !important;
+  color: var(--text-primary) !important;
+  font-size: 14px !important;
+}
+
+.cta-group {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin: 2rem auto 1.25rem;
+  max-width: 340px;
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  padding: 15px 24px;
+  border-radius: 8px;
+  font-size: 15px;
+  font-weight: 500;
+  cursor: pointer;
+  text-decoration: none;
+  font-family: inherit;
+  border: none;
+  transition: all 0.15s ease;
+  text-align: center;
+  line-height: 1.4;
+}
+.btn-primary {
+  background: var(--accent);
+  color: #fff;
+  box-shadow: var(--shadow-soft);
+}
+.btn-primary:hover { background: var(--accent-dark); transform: translateY(-1px); }
+.btn-secondary {
+  background: transparent;
+  color: var(--accent-dark);
+  border: 1px solid var(--accent);
+}
+.btn-secondary:hover { background: var(--accent-light); }
+.btn-tertiary {
+  background: transparent;
+  color: var(--text-secondary);
+  border: 1px solid var(--border-strong);
+  padding: 13px 20px;
+  font-size: 14px;
+}
+.btn-tertiary:hover { background: var(--bg-secondary); }
+.btn-block { width: 100%; }
+
+.tagline {
+  font-size: 13px;
+  color: var(--text-tertiary);
+  margin-top: 1.5rem;
+  letter-spacing: 0.05em;
+}
+
+.worry-list {
+  background: var(--bg-secondary);
+  border-radius: 12px;
+  padding: 1.75rem 1.75rem 1.25rem;
+  margin: 1.5rem auto;
+  max-width: 460px;
+}
+.worry-list p {
+  font-size: 14px;
+  color: var(--text-primary);
+  margin: 0 0 0.75rem;
+  padding-left: 1.5rem;
+  position: relative;
+  line-height: 1.7;
+}
+.worry-list p::before {
+  content: '';
+  position: absolute;
+  left: 0; top: 10px;
+  width: 6px; height: 6px;
+  border-radius: 50%;
+  background: #EF9F27;
+}
+
+.callout {
+  background: var(--bg-soft);
+  border-radius: 8px;
+  padding: 1.5rem 1.5rem;
+  margin: 1.75rem auto;
+  max-width: 460px;
+  text-align: center;
+  font-size: 14px;
+  color: var(--accent-dark);
+  line-height: 1.9;
+}
+
+.strong-line {
+  font-size: 18px;
+  font-weight: 500;
+  text-align: center;
+  margin: 2.5rem auto 0;
+  line-height: 1.8;
+  color: var(--text-primary);
+}
+.strong-line span { color: var(--accent); }
+
+.feature-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 12px;
+  margin: 2rem auto;
+  max-width: 540px;
+}
+@media (max-width: 540px) {
+  .feature-grid { grid-template-columns: 1fr 1fr; }
+}
+.feature-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 1.1rem;
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+}
+.feature-icon {
+  flex-shrink: 0;
+  color: var(--accent);
+  font-size: 20px;
+  margin-top: 2px;
+}
+.feature-text {
+  font-size: 14px;
+  color: var(--text-primary);
+  line-height: 1.6;
+}
+
+.plan-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 2rem 1.75rem;
+  margin: 1.75rem auto;
+  max-width: 520px;
+  box-shadow: var(--shadow-soft);
+}
+.plan-card.featured {
+  border: 2px solid var(--accent);
+  background: var(--accent-soft);
+}
+.plan-badge {
+  display: inline-block;
+  background: var(--accent-light);
+  color: var(--accent-dark);
+  font-size: 12px;
+  padding: 4px 12px;
+  border-radius: 999px;
+  margin-bottom: 0.75rem;
+  font-weight: 500;
+}
+.plan-badge.featured {
+  background: var(--accent);
+  color: #fff;
+}
+.plan-badge.subtle {
+  background: var(--bg-secondary);
+  color: var(--text-secondary);
+}
+.plan-name {
+  font-size: 19px;
+  font-weight: 500;
+  margin: 0 0 0.5rem;
+}
+.plan-tag {
+  font-size: 13px;
+  color: var(--text-secondary);
+  margin: 0 0 1.25rem;
+  line-height: 1.7;
+}
+.plan-price {
+  font-size: 14px;
+  color: var(--text-secondary);
+  margin: 0.5rem 0 1.5rem;
+}
+.plan-price strong {
+  font-size: 30px;
+  font-weight: 500;
+  color: var(--text-primary);
+  margin-right: 4px;
+}
+.plan-list {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 1.25rem;
+}
+.plan-list li {
+  font-size: 14px;
+  padding: 7px 0 7px 28px;
+  position: relative;
+  line-height: 1.6;
+  color: var(--text-primary);
+}
+.plan-list li::before {
+  content: '✓';
+  position: absolute;
+  left: 6px;
+  color: var(--success);
+  font-weight: 500;
+}
+.plan-divider {
+  border-top: 1px solid var(--border);
+  padding-top: 1.25rem;
+  margin-top: 1.25rem;
+}
+.plan-fit-title {
+  font-size: 13px;
+  color: var(--text-secondary);
+  margin: 0 0 0.5rem;
+}
+.plan-note {
+  font-size: 12px;
+  color: var(--text-tertiary);
+  background: var(--bg-secondary);
+  padding: 12px 14px;
+  border-radius: 8px;
+  margin: 1.25rem 0;
+  line-height: 1.7;
+}
+
+.compare-wrap {
+  max-width: 560px;
+  margin: 1.5rem auto;
+  overflow-x: auto;
+}
+.compare-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+  table-layout: fixed;
+  background: var(--bg-card);
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: var(--shadow-soft);
+}
+.compare-table th, .compare-table td {
+  padding: 12px 8px;
+  text-align: center;
+  border-bottom: 1px solid var(--border);
+  word-break: break-word;
+}
+.compare-table tr:last-child td { border-bottom: none; }
+.compare-table th {
+  font-weight: 500;
+  background: var(--bg-secondary);
+  font-size: 13px;
+}
+.compare-table th:first-child, .compare-table td:first-child {
+  text-align: left;
+  color: var(--text-secondary);
+  font-size: 12px;
+  padding-left: 14px;
+}
+.compare-table .featured-col {
+  background: var(--accent-soft);
+  color: var(--accent-dark);
+}
+.circle { color: var(--success); font-weight: 500; }
+.dash { color: var(--text-tertiary); }
+
+.two-col {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  margin: 1.75rem auto;
+  max-width: 520px;
+}
+@media (max-width: 520px) { .two-col { grid-template-columns: 1fr; } }
+.col-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 1.25rem;
+}
+.col-card h3 {
+  font-size: 14px;
+  margin: 0 0 0.75rem;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.col-card.can h3 { color: #0F6E56; }
+.col-card.cant h3 { color: #993C1D; }
+.col-card ul { list-style: none; padding: 0; margin: 0; }
+.col-card li {
+  font-size: 13px;
+  padding: 6px 0 6px 20px;
+  position: relative;
+  line-height: 1.6;
+}
+.col-card.can li::before {
+  content: '✓';
+  position: absolute; left: 0; color: var(--success);
+}
+.col-card.cant li::before {
+  content: '—';
+  position: absolute; left: 0; color: var(--text-tertiary);
+}
+
+.faq-list { max-width: 560px; margin: 0 auto; }
+.faq-item {
+  border-bottom: 1px solid var(--border);
+  padding: 1.25rem 0;
+}
+.faq-item:last-child { border-bottom: none; }
+.faq-q {
+  font-size: 14px;
+  font-weight: 500;
+  margin: 0 0 0.5rem;
+  color: var(--text-primary);
+  display: flex;
+  gap: 8px;
+}
+.faq-q::before { content: 'Q.'; color: var(--accent); }
+.faq-a {
+  font-size: 14px;
+  color: var(--text-secondary);
+  margin: 0;
+  padding-left: 22px;
+  line-height: 1.8;
+}
+
+.rule-list {
+  padding-left: 0;
+  list-style: none;
+  max-width: 520px;
+  margin: 1.75rem auto;
+}
+.rule-list li {
+  font-size: 13px;
+  color: var(--text-secondary);
+  padding: 7px 0 7px 22px;
+  position: relative;
+  line-height: 1.8;
+}
+.rule-list li::before {
+  content: '';
+  position: absolute;
+  left: 4px; top: 16px;
+  width: 6px; height: 6px;
+  border-radius: 50%;
+  background: #B4B2A9;
+}
+
+.final-cta {
+  background: var(--bg-soft);
+  border-radius: 16px;
+  padding: 3rem 1.75rem;
+  text-align: center;
+  margin: 0 0.5rem;
+}
+.signature {
+  font-family: 'Noto Serif JP', serif;
+  font-size: 16px;
+  color: var(--accent-dark);
+  margin-top: 2rem;
+  line-height: 1.9;
+  font-weight: 500;
+}
+.divider-mini {
+  width: 32px;
+  height: 1px;
+  background: var(--border-strong);
+  margin: 1.75rem auto;
+}
+
+footer {
+  text-align: center;
+  padding: 2rem 1.5rem 3rem;
+  font-size: 12px;
+  color: var(--text-tertiary);
+  line-height: 1.8;
+}
+footer a {
+  color: var(--text-secondary);
+  text-decoration: none;
+  margin: 0 8px;
+}
+footer a:hover { text-decoration: underline; }
+
+.highlight {
+  color: var(--accent-dark);
+  font-weight: 500;
+}
+</style>
+</head>
+<body>
+
+<div class="lp-wrap">
+
+  <section class="section" style="padding-top: 1.5rem; padding-bottom: 0; border-bottom: none;">
+    <div class="hero">
+      <div class="hero-lamp"><i class="ti ti-bulb"></i></div>
+      <p class="eyebrow">看護学生のためのオンライン学び場</p>
+      <h1>深夜2時、<br>実習記録でひとりに<br>なっている看護学生へ。</h1>
+      <p>アセスメント、SOAP、看護計画、関連図。<br>AIを使っても、</p>
+      <div class="hero-quote">「自分の患者さんの場合、<br>これで合っているの？」</div>
+      <p>と不安になることは<br>ありませんか？</p>
+      <p class="hero-message">てらこやは、AIで記録の負担を減らしながら、<br>現役看護師と一緒に看護過程の考え方を<br>整理できる学び場です。</p>
+      <div class="cta-group">
+        <a href="https://utage-system.com/p/11wirkQQwIOr" class="btn btn-primary">てらこやのプランを見る</a>
+        <a href="https://utage-system.com/p/C9uxzCgyHaVN" class="btn btn-secondary">個別伴走プランに参加する</a>
+      </div>
+      <p class="tagline">記録をAIに。心を患者に。</p>
+    </div>
+  </section>
+
+  <section class="section">
+    <h2 class="h2">実習記録、<br>ひとりで抱えすぎていませんか？</h2>
+    <p class="lead">実習記録がつらいのは、<br>書く量が多いからだけではありません。</p>
+    <div class="worry-list">
+      <p>何を書けばいいのか分からない</p>
+      <p>アセスメントが合っているか不安</p>
+      <p>SOAPのAで手が止まる</p>
+      <p>関連図がぐちゃぐちゃになる</p>
+      <p>AIに聞いても、そのまま使っていいのか分からない</p>
+      <p>指導者さんに「なんでそう考えたの？」と聞かれるのが怖い</p>
+    </div>
+    <p class="lead" style="margin-top: 1.5rem;">調べれば情報は出てくる。<br>AIに聞けば文章も出てくる。<br>でも最後に止まるのは、</p>
+    <div class="callout">「この患者さんの場合、<br>私はどう考えればいいのか」<br>というところだと思います。</div>
+    <p class="lead" style="font-size: 13px; margin-bottom: 0;">記録でつまずいているのは、<br>あなたのやる気が足りないからではありません。<br>考え方の順番を、まだ一人で抱えているだけです。</p>
+  </section>
+
+  <section class="section">
+    <h2 class="h2">AIだけでは、<br>実習記録の不安は消えません。</h2>
+    <p class="lead">AIはとても便利です。アセスメントの下書き、SOAPの整理、看護問題の候補出し、関連図の構造化 — できることは確実に増えました。</p>
+    <p class="lead">でも、AIが出した文章をそのまま使っても、指導者さんに聞かれた時に説明できなければ、自分の学びにはなりません。</p>
+    <div class="feature-grid">
+      <div class="feature-card"><span class="feature-icon"><i class="ti ti-stethoscope"></i></span><div class="feature-text">患者さんの情報を<br>どう見るか</div></div>
+      <div class="feature-card"><span class="feature-icon"><i class="ti ti-notebook"></i></span><div class="feature-text">どこから<br>アセスメントするか</div></div>
+      <div class="feature-card"><span class="feature-icon"><i class="ti ti-link"></i></span><div class="feature-text">どう看護問題に<br>つなげるか</div></div>
+      <div class="feature-card"><span class="feature-icon"><i class="ti ti-list-check"></i></span><div class="feature-text">どう計画に<br>落とし込むか</div></div>
+      <div class="feature-card"><span class="feature-icon"><i class="ti ti-message-circle"></i></span><div class="feature-text">指導者さんに<br>どう説明するか</div></div>
+      <div class="feature-card"><span class="feature-icon"><i class="ti ti-heart-handshake"></i></span><div class="feature-text">不安をひとりで<br>抱え込まないか</div></div>
+    </div>
+    <p class="strong-line"><span>AIで早くする。</span><br><span>看護師と一緒に、深く考える。</span></p>
+  </section>
+
+  <section class="section">
+    <h2 class="h2">てらこやは、<br>実習で詰まった時に<br>戻ってこられる場所です。</h2>
+    <p class="lead">看護学生のためのオンラインコミュニティ。実習記録AIセットを使いながら、看護過程、アセスメント、関連図、国家試験、実習中の不安まで、ひとりで抱え込みやすい悩みを一緒に整理していきます。</p>
+    <div class="callout" style="max-width: 480px;">記録を代わりに作る場所ではありません。<br>自分で考えられるようになるための、<br>学び場であり、相談場所であり、<br>実習中の避難所です。</div>
+    <div class="feature-grid">
+      <div class="feature-card"><span class="feature-icon"><i class="ti ti-clock"></i></span><div class="feature-text">AIで記録の<br>負担を減らす</div></div>
+      <div class="feature-card"><span class="feature-icon"><i class="ti ti-brain"></i></span><div class="feature-text">看護過程の<br>考え方が身につく</div></div>
+      <div class="feature-card"><span class="feature-icon"><i class="ti ti-eye"></i></span><div class="feature-text">患者さんをどう<br>見るか整理する</div></div>
+      <div class="feature-card"><span class="feature-icon"><i class="ti ti-messages"></i></span><div class="feature-text">自分の言葉で<br>説明できる状態へ</div></div>
+    </div>
+  </section>
+
+  <section class="section" id="plans">
+    <h2 class="h2">まずは、月額3,300円の<br>基本プランから。</h2>
+    <p class="lead">実習記録AIセットを使いながら、質問会やコミュニティで学べるプランです。</p>
+    <div class="plan-card">
+      <span class="plan-badge">スタンダード</span>
+      <p class="plan-name">てらこや 基本プラン</p>
+      <p class="plan-tag">自分で進めたいけれど、ひとりでは不安。<br>そんな看護学生さんへ。</p>
+      <p class="plan-price"><strong>3,300円</strong>/ 月（税込）</p>
+      <ul class="plan-list">
+        <li>実習記録AIセットが使える</li>
+        <li>アセスメント、SOAP、看護計画、関連図のAIツール</li>
+        <li>週1ライブ、質問会</li>
+        <li>アーカイブ視聴</li>
+        <li>Discordコミュニティ</li>
+        <li>看護過程の本質解説</li>
+        <li>国家試験サポート</li>
+        <li>実習中の質問、相談</li>
+      </ul>
+      <div class="plan-divider">
+        <p class="plan-fit-title">こんな看護学生さんに</p>
+        <ul class="plan-list" style="margin: 0;">
+          <li style="padding-top:3px; padding-bottom:3px;">まずは自分で進めてみたい</li>
+          <li style="padding-top:3px; padding-bottom:3px;">記録の負担を減らしたい</li>
+          <li style="padding-top:3px; padding-bottom:3px;">考え方を少しずつ学びたい</li>
+          <li style="padding-top:3px; padding-bottom:3px;">実習中に質問できる場所がほしい</li>
+        </ul>
+      </div>
+      <div class="plan-note">基本プランでも質問はできますが、緊急度の高い質問や、個別の実習状況に合わせた継続伴走には対応できない場合があります。</div>
+      <a href="https://utage-system.com/p/11wirkQQwIOr" class="btn btn-primary btn-block" data-plan="basic">てらこや基本プランに参加する</a>
+    </div>
+  </section>
+
+  <section class="section">
+    <h2 class="h2">基本プランでできること、<br>個別伴走が必要なこと。</h2>
+    <div class="two-col">
+      <div class="col-card can">
+        <h3><i class="ti ti-circle-check"></i>できること</h3>
+        <ul>
+          <li>AIツールで記録の下書きや整理</li>
+          <li>質問会で看護過程を学ぶ</li>
+          <li>コミュニティ内で質問</li>
+          <li>アーカイブで復習</li>
+          <li>同じ看護学生の悩みから学ぶ</li>
+          <li>国家試験や実習中の相談</li>
+        </ul>
+      </div>
+      <div class="col-card cant">
+        <h3><i class="ti ti-info-circle"></i>難しいこと</h3>
+        <ul>
+          <li>緊急度の高い質問への優先対応</li>
+          <li>専属看護師による継続サポート</li>
+          <li>自分の実習目標に合わせた計画</li>
+          <li>日々のスケジュール伴走</li>
+          <li>同じ担当者への継続相談</li>
+          <li>メンタル面の個別サポート</li>
+        </ul>
+      </div>
+    </div>
+    <p class="lead" style="font-size: 14px;">実習中の不安が強い人、記録だけでなく目標や動き方まで一緒に整理してほしい人には、<span class="highlight">個別伴走プラン</span>を用意しています。</p>
+  </section>
+
+  <section class="section" id="individual">
+    <h2 class="h2">実習をひとりで乗り切るのが<br>不安な人へ。</h2>
+    <p class="lead">専属の看護師が担当し、実習目標、スケジュール、記録の考え方、メンタル面まで一緒に整理します。</p>
+    <div class="plan-card featured">
+      <span class="plan-badge featured">プレミアム / 専属看護師</span>
+      <p class="plan-name">てらこや 個別伴走プラン</p>
+      <p class="plan-tag">自分の実習に合わせて、<br>専属看護師と一緒に進めたい人へ。</p>
+      <p class="plan-price"><strong>29,800円</strong>/ 月（税込）</p>
+      <ul class="plan-list">
+        <li>専属看護師が担当</li>
+        <li>優先チャット相談</li>
+        <li>月2回の個別面談</li>
+        <li>実習目標の整理</li>
+        <li>記録スケジュールの設計</li>
+        <li>アセスメント、SOAP、看護計画の考え方相談</li>
+        <li>AIで作った下書きの確認ポイント整理</li>
+        <li>指導者さんに聞かれた時の説明準備</li>
+        <li>実習中のメンタル相談</li>
+      </ul>
+      <div class="plan-divider">
+        <p class="plan-fit-title">こんな看護学生さんに</p>
+        <ul class="plan-list" style="margin: 0;">
+          <li style="padding-top:3px; padding-bottom:3px;">実習が始まると毎回記録で崩れる</li>
+          <li style="padding-top:3px; padding-bottom:3px;">何を質問すればいいか分からない</li>
+          <li style="padding-top:3px; padding-bottom:3px;">指導者さんに聞かれると頭が真っ白</li>
+          <li style="padding-top:3px; padding-bottom:3px;">同じ看護師に継続して見てほしい</li>
+          <li style="padding-top:3px; padding-bottom:3px;">実習目標やスケジュールも整えたい</li>
+        </ul>
+      </div>
+      <div class="plan-note">個別伴走プランでも、記録の丸ごと作成や提出物の代行は行いません。学習支援、思考整理、説明準備、実習中の不安の整理を目的としたサポートです。</div>
+      <a href="https://utage-system.com/p/C9uxzCgyHaVN" class="btn btn-primary btn-block" data-plan="individual">個別伴走プランに参加する</a>
+    </div>
+  </section>
+
+  <section class="section">
+    <h2 class="h2">あなたの実習状況に合わせて、<br>プランを選べます。</h2>
+    <div class="compare-wrap">
+      <table class="compare-table">
+        <thead>
+          <tr>
+            <th style="width: 36%;">内容</th>
+            <th style="width: 32%;">基本プラン</th>
+            <th style="width: 32%;" class="featured-col">個別伴走プラン</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>月額</td><td>3,300円</td><td class="featured-col">29,800円</td></tr>
+          <tr><td>AI実習記録セット</td><td><span class="circle">○</span></td><td class="featured-col"><span class="circle">○</span></td></tr>
+          <tr><td>質問会・ライブ</td><td><span class="circle">○</span></td><td class="featured-col"><span class="circle">○</span></td></tr>
+          <tr><td>アーカイブ</td><td><span class="circle">○</span></td><td class="featured-col"><span class="circle">○</span></td></tr>
+          <tr><td>コミュニティ質問</td><td><span class="circle">○</span></td><td class="featured-col"><span class="circle">○</span></td></tr>
+          <tr><td>優先返信</td><td><span class="dash">—</span></td><td class="featured-col"><span class="circle">○</span></td></tr>
+          <tr><td>専属看護師</td><td><span class="dash">—</span></td><td class="featured-col"><span class="circle">○</span></td></tr>
+          <tr><td>個別面談</td><td><span class="dash">—</span></td><td class="featured-col">月2回</td></tr>
+          <tr><td>実習目標設計</td><td><span class="dash">—</span></td><td class="featured-col"><span class="circle">○</span></td></tr>
+          <tr><td>スケジュール伴走</td><td><span class="dash">—</span></td><td class="featured-col"><span class="circle">○</span></td></tr>
+          <tr><td>メンタル相談</td><td>グループ中心</td><td class="featured-col"><span class="circle">○</span></td></tr>
+          <tr><td>向いている人</td><td style="font-size:11px;">自分で<br>進めたい人</td><td class="featured-col" style="font-size:11px;">個別に<br>見てほしい人</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="lead" style="font-size: 13px; margin-top: 1.5rem;">まずは基本プランから始めて、必要に応じて個別伴走へ切り替えることもできます。</p>
+  </section>
+
+  <section class="section" id="aiset">
+    <h2 class="h2">まずはツールだけ<br>試したい人へ。</h2>
+    <p class="lead">月額プランに入る前に、実習記録AIセットだけ使ってみたい人向けの買い切りプランです。</p>
+    <div class="plan-card" style="max-width: 460px;">
+      <span class="plan-badge subtle">買い切り</span>
+      <p class="plan-name">実習記録AIセット</p>
+      <p class="plan-tag">アセスメント、SOAP、看護計画、関連図など、実習記録を整理するためのAIツール。</p>
+      <p class="plan-price"><strong>4,980円</strong>（一回払い・税込）</p>
+      <div class="plan-note">買い切りプランには、コミュニティ参加、質問会、個別相談、伴走サポートは含まれません。</div>
+      <a href="https://utage-system.com/p/jCJo2tBvpoVW" class="btn btn-tertiary btn-block" data-plan="aiset">AIセットだけ購入する</a>
+    </div>
+  </section>
+
+  <section class="section">
+    <h2 class="h2">てらこやは、<br>記録代行サービスでは<br>ありません。</h2>
+    <p class="lead">実習記録の丸ごと作成や、提出物の代行は行いません。AIや看護師のサポートを使いながら、患者さんの情報をどう見て、どうアセスメントし、どう看護問題や計画につなげるかを、自分で考えられるようになるための場所です。</p>
+    <div class="callout" style="max-width: 460px;">代わりに書くのではなく、<br>あなたが考えられるように支えます。</div>
+    <p class="lead" style="font-size: 13px;">提出物の最終判断は、学校の指導や実習先のルールに従い、ご本人の責任で行ってください。</p>
+  </section>
+
+  <section class="section">
+    <h2 class="h2">安心して学ぶために、<br>守ってほしいこと。</h2>
+    <ul class="rule-list">
+      <li>患者さんが特定される個人情報は送らないでください</li>
+      <li>学校や実習先の規定に反する利用はできません</li>
+      <li>記録の代行、提出物の丸ごと作成は行いません</li>
+      <li>サポートは学習支援、思考整理、メンタル面の伴走を目的としています</li>
+      <li>返信時間や対応範囲はプランごとに異なります</li>
+      <li>緊急の医療判断や実習先での判断は、学校、指導者、実習担当者に確認してください</li>
+    </ul>
+    <p class="lead" style="font-size: 13px;">安心して相談できる場所にするために、患者さん、学校、実習先、そしてあなた自身を守るルールを大切にしています。</p>
+  </section>
+
+  <section class="section">
+    <h2 class="h2">よくある質問</h2>
+    <div class="faq-list">
+      <div class="faq-item"><p class="faq-q">基本プランでも質問できますか？</p><p class="faq-a">はい、できます。ただし、緊急度の高い質問や個別の実習状況に合わせた継続伴走は、個別伴走プランの対象になります。</p></div>
+      <div class="faq-item"><p class="faq-q">AIが記録を全部作ってくれるサービスですか？</p><p class="faq-a">違います。てらこやは記録代行ではありません。AIを使いながら、自分で考えられるようになるための学び場です。</p></div>
+      <div class="faq-item"><p class="faq-q">個別伴走では、記録を添削してもらえますか？</p><p class="faq-a">記録を丸ごと作成するのではなく、考え方、アセスメントの視点、SOAPの整理、説明できる状態づくりをサポートします。</p></div>
+      <div class="faq-item"><p class="faq-q">どのプランを選べばいいか分かりません。</p><p class="faq-a">自分で進めながら学びたい人は基本プラン、実習中に個別で支えてほしい人は個別伴走プランがおすすめです。</p></div>
+      <div class="faq-item"><p class="faq-q">個別伴走プランは誰でも入れますか？</p><p class="faq-a">専属看護師が対応するプランのため、受け入れ人数に限りがあります。決済ページで募集状況をご確認ください。</p></div>
+      <div class="faq-item"><p class="faq-q">患者さんの情報を送ってもいいですか？</p><p class="faq-a">患者さんが特定される個人情報は送らないでください。氏名、病院名、生年月日、住所、詳細すぎる個別情報などは伏せた上で、学習目的の相談としてご利用ください。</p></div>
+      <div class="faq-item"><p class="faq-q">国家試験の相談もできますか？</p><p class="faq-a">はい。基本プラン内でも、国家試験に関する学習相談や勉強の進め方について扱っていきます。</p></div>
+    </div>
+  </section>
+
+  <section class="section" style="border-bottom: none; padding-bottom: 1.5rem;">
+    <div class="final-cta">
+      <div class="hero-lamp"><i class="ti ti-bulb"></i></div>
+      <h2 class="h2">実習記録を、<br>もうひとりで<br>抱えなくていい。</h2>
+      <p style="font-size: 14px; color: var(--text-secondary); line-height: 1.9; max-width: 460px; margin: 1.25rem auto;">AIを使える時代になっても、<br>患者さんを見て、感じて、考えるのはあなたです。</p>
+      <p style="font-size: 14px; color: var(--text-secondary); line-height: 1.9; max-width: 460px; margin: 1.25rem auto;">てらこやは、記録の負担を減らしながら、<br>看護学生に必要な考える力を守るための場所です。</p>
+      <div class="cta-group">
+        <a href="https://utage-system.com/p/11wirkQQwIOr" class="btn btn-primary" data-plan="basic">てらこや基本プランに参加する</a>
+        <a href="https://utage-system.com/p/C9uxzCgyHaVN" class="btn btn-secondary" data-plan="individual">個別伴走プランに参加する</a>
+        <a href="https://utage-system.com/p/jCJo2tBvpoVW" class="btn btn-tertiary" data-plan="aiset">AIセットだけ購入する</a>
+      </div>
+      <div class="divider-mini"></div>
+      <p class="signature">記録をAIに。<br>心を患者に。</p>
+    </div>
+  </section>
+
+  <footer>
+    <p>© 2026 てらこや</p>
+    <p style="margin-top: 0.5rem;">
+      <a href="https://utage-system.com/p/rKlKmcbuAidO" target="_blank" rel="noopener">特定商取引法に基づく表記</a>
+      <a href="https://utage-system.com/p/cb4TIpDE2k8M" target="_blank" rel="noopener">プライバシーポリシー</a>
+    </p>
+  </footer>
+
+</div>
+
+</body>
+</html>
